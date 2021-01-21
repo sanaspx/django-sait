@@ -11,8 +11,16 @@
 {% block content %}
             <h1>Добавление новости</h1>
 <form action="{% url 'add_news'%}" method="post">
-    {% csrftoken %}
+    {% csrf_token %}
+    {% comment %}
     {{ form.as_p}}
+    {% endcomment %}
+
+    <div class="form-group">
+    <label for="{{ form.title.id_for_label }}">Название:</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
     <button type="submit"class="btn btn-primary btn-block"> Добавить новость</button>
 </form>
 {% endblock %}
